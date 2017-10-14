@@ -22,12 +22,12 @@ class EventsController < ApplicationController
     @myevents = Event.where(owner_id: params[:owner_id] )
     render json: @myevents, status: 200
   end
-  
-  def events_site 
-    @eventsites: Event.where(site_id: params[:site_id])
-    render json: @eventsites, status: 200	
-  end 	
-	
+
+  def events_site
+    @eventsites =  Event.where(site_id: params[:site_id])
+    render json: @eventsites, status: 200
+  end
+
 
   # GET /signin/event/1
   def showMyEvent
