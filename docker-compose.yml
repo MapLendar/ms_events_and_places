@@ -3,7 +3,7 @@ services:
   db_events_sites:
     image: mysql
     ports:
-      - "4006:4006"
+      - "4008:3306"
     environment:
       MYSQL_ROOT_PASSWORD: 1234
       MYSQL_USER: arqsoft
@@ -14,6 +14,6 @@ services:
     build: .
     command: bash -c "sleep 40 && rm -f tmp/pids/server.pid && bundle exec rails db:migrate && bundle exec rails s -p 3006 -b '0.0.0.0'"
     ports:
-      - "3006:3006"
+      - "3008:3000"
     depends_on:
       - db_events_sites
