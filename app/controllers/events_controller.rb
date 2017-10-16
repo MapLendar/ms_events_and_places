@@ -1,6 +1,7 @@
 class EventsController < ApplicationController
   before_action :set_event, only: [:show, :update, :destroy]
 
+
   # GET /events
   def index
     @events = Event.all
@@ -64,7 +65,8 @@ class EventsController < ApplicationController
   end
 
   def destroy_by_name
-    Event.where(:name => params[:name]).destroy_all
+    @del = Event.where(:name => params[:name]).destroy_all
+    render json: @del, status: 200
     #@event.destroy
   end
 
