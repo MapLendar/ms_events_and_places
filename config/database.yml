@@ -16,8 +16,10 @@ default: &default
   username: root
   password: 1234
   host: localhost
+  #username: arqsoft
+  #password: 123
   #host: db_events_sites
-  #socket: /var/run/mysqld/mysqld.sock
+  socket: /var/run/mysqld/mysqld.sock
 
 development:
   <<: *default

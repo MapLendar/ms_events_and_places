@@ -8,4 +8,5 @@ Rails.application.routes.draw do
 	post '/' =>  "events#create"
 	get '/view/my_events' => 'events#my_events'
 	get '/view/events_site/:site_id' => 'events#events_site'
+  delete '/events' => 'events#destroy_by_name' 
 end

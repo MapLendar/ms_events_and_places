@@ -822,3 +822,236 @@ Processing by EventsController#index as HTML
 Completed 200 OK in 109ms (Views: 90.8ms | ActiveRecord: 13.0ms)
 
 
+Started GET "/events" for 127.0.0.1 at 2017-10-14 16:56:54 -0500
+  [1m[35m (12.0ms)[0m  [1m[35mSET NAMES utf8,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  [1m[35m (10.0ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+Processing by EventsController#index as HTML
+  [1m[36mEvent Load (2.0ms)[0m  [1m[34mSELECT `events`.* FROM `events`[0m
+Completed 200 OK in 92ms (Views: 39.1ms | ActiveRecord: 4.0ms)
+
+
+Started POST "/events" for 127.0.0.1 at 2017-10-14 18:38:29 -0500
+Processing by EventsController#create as */*
+  Parameters: {"name"=>"mi evento", "description"=>"Biggest event", "start_time"=>"19900909", "end_time"=>"19900909", "site_id"=>"0", "event"=>{"name"=>"mi evento", "description"=>"Biggest event", "site_id"=>"0", "start_time"=>"19900909", "end_time"=>"19900909"}}
+  [1m[35m (11.5ms)[0m  [1m[35mSET NAMES utf8,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  [1m[35m (3.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mSite Load (0.5ms)[0m  [1m[34mSELECT  `sites`.* FROM `sites` WHERE `sites`.`id` = 0 LIMIT 1[0m
+  [1m[36mEvent Exists (26.5ms)[0m  [1m[34mSELECT  1 AS one FROM `events` WHERE `events`.`name` = BINARY 'mi evento' LIMIT 1[0m
+  [1m[35m (8.0ms)[0m  [1m[31mROLLBACK[0m
+Completed 422 Unprocessable Entity in 601ms (Views: 0.5ms | ActiveRecord: 145.6ms)
+
+
+Started POST "/events" for 127.0.0.1 at 2017-10-14 18:38:43 -0500
+Processing by EventsController#create as */*
+  Parameters: {"name"=>"mi evento 2", "description"=>"Biggest event", "start_time"=>"19900909", "end_time"=>"19900909", "site_id"=>"1", "event"=>{"name"=>"mi evento 2", "description"=>"Biggest event", "site_id"=>"1", "start_time"=>"19900909", "end_time"=>"19900909"}}
+  [1m[35m (0.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mSite Load (30.0ms)[0m  [1m[34mSELECT  `sites`.* FROM `sites` WHERE `sites`.`id` = 1 LIMIT 1[0m
+  [1m[36mEvent Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM `events` WHERE `events`.`name` = BINARY 'mi evento 2' LIMIT 1[0m
+  [1m[35mSQL (8.5ms)[0m  [1m[32mINSERT INTO `events` (`name`, `description`, `site_id`, `start_time`, `end_time`, `created_at`, `updated_at`) VALUES ('mi evento 2', 'Biggest event', 1, '1990-09-09 00:00:00', '1990-09-09 00:00:00', '2017-10-14 23:38:43', '2017-10-14 23:38:43')[0m
+  [1m[35m (78.6ms)[0m  [1m[35mCOMMIT[0m
+Completed 201 Created in 190ms (Views: 1.5ms | ActiveRecord: 118.1ms)
+
+
+Started POST "/events" for 127.0.0.1 at 2017-10-14 18:46:32 -0500
+Processing by EventsController#create as JSON
+  Parameters: {"id"=>"Ciencias Humanas", "name"=>"Minha", "description"=>"Ya estoy curado", "site_id"=>"Ciencias Humanas", "start_time"=>"2017-10-14T12:00:00-05:00", "end_time"=>"2017-10-14T12:00:00-05:00", "owner_id"=>nil, "created_at"=>"2017-10-14T23:46:32.262Z", "updated_at"=>"2017-10-14T23:46:32.262Z", "event"=>{"id"=>"Ciencias Humanas", "name"=>"Minha", "description"=>"Ya estoy curado", "site_id"=>"Ciencias Humanas", "start_time"=>"2017-10-14T12:00:00-05:00", "end_time"=>"2017-10-14T12:00:00-05:00", "owner_id"=>nil, "created_at"=>"2017-10-14T23:46:32.262Z", "updated_at"=>"2017-10-14T23:46:32.262Z"}}
+Unpermitted parameters: :id, :created_at, :updated_at
+  [1m[35m (0.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mSite Load (0.5ms)[0m  [1m[34mSELECT  `sites`.* FROM `sites` WHERE `sites`.`id` = 0 LIMIT 1[0m
+  [1m[36mEvent Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM `events` WHERE `events`.`name` = BINARY 'Minha' LIMIT 1[0m
+  [1m[35m (0.5ms)[0m  [1m[31mROLLBACK[0m
+Completed 422 Unprocessable Entity in 16ms (Views: 0.4ms | ActiveRecord: 1.5ms)
+
+
+Started POST "/events" for 127.0.0.1 at 2017-10-14 18:46:54 -0500
+Processing by EventsController#create as JSON
+  Parameters: {"id"=>"Leon de Greiff", "name"=>"", "description"=>"", "site_id"=>"Leon de Greiff", "start_time"=>"2017-10-14T12:00:00-05:00", "end_time"=>"2017-10-14T12:00:00-05:00", "owner_id"=>nil, "created_at"=>"2017-10-14T23:46:53.976Z", "updated_at"=>"2017-10-14T23:46:53.976Z", "event"=>{"id"=>"Leon de Greiff", "name"=>"", "description"=>"", "site_id"=>"Leon de Greiff", "start_time"=>"2017-10-14T12:00:00-05:00", "end_time"=>"2017-10-14T12:00:00-05:00", "owner_id"=>nil, "created_at"=>"2017-10-14T23:46:53.976Z", "updated_at"=>"2017-10-14T23:46:53.976Z"}}
+Unpermitted parameters: :id, :created_at, :updated_at
+  [1m[35m (0.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mSite Load (0.5ms)[0m  [1m[34mSELECT  `sites`.* FROM `sites` WHERE `sites`.`id` = 0 LIMIT 1[0m
+  [1m[36mEvent Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM `events` WHERE `events`.`name` = BINARY '' LIMIT 1[0m
+  [1m[35m (0.5ms)[0m  [1m[31mROLLBACK[0m
+Completed 422 Unprocessable Entity in 48ms (Views: 0.4ms | ActiveRecord: 1.5ms)
+
+
+Started POST "/events" for 127.0.0.1 at 2017-10-14 18:48:39 -0500
+Processing by EventsController#create as JSON
+  Parameters: {"id"=>"Leon de Greiff", "name"=>"No me olvido ", "description"=>"Te quiero", "site_id"=>"Leon de Greiff", "start_time"=>"2017-10-14T12:00:00-05:00", "end_time"=>"2017-10-14T12:00:00-05:00", "owner_id"=>nil, "created_at"=>"2017-10-14T23:48:39.398Z", "updated_at"=>"2017-10-14T23:48:39.398Z", "event"=>{"id"=>"Leon de Greiff", "name"=>"No me olvido ", "description"=>"Te quiero", "site_id"=>"Leon de Greiff", "start_time"=>"2017-10-14T12:00:00-05:00", "end_time"=>"2017-10-14T12:00:00-05:00", "owner_id"=>nil, "created_at"=>"2017-10-14T23:48:39.398Z", "updated_at"=>"2017-10-14T23:48:39.398Z"}}
+Unpermitted parameters: :id, :created_at, :updated_at
+  [1m[35m (0.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mSite Load (0.5ms)[0m  [1m[34mSELECT  `sites`.* FROM `sites` WHERE `sites`.`id` = 0 LIMIT 1[0m
+  [1m[36mEvent Exists (1.0ms)[0m  [1m[34mSELECT  1 AS one FROM `events` WHERE `events`.`name` = BINARY 'No me olvido ' LIMIT 1[0m
+  [1m[35m (0.5ms)[0m  [1m[31mROLLBACK[0m
+Completed 422 Unprocessable Entity in 13ms (Views: 0.3ms | ActiveRecord: 2.5ms)
+
+
+Started POST "/events" for 127.0.0.1 at 2017-10-14 19:07:38 -0500
+Processing by EventsController#create as JSON
+  Parameters: {"id"=>"Biblioteca central", "name"=>"Hola ", "description"=>"señor locutor", "site_id"=>3, "start_time"=>"2017-10-14T12:00:00-05:00", "end_time"=>"2017-10-14T12:00:00-05:00", "owner_id"=>nil, "created_at"=>"2017-10-15T00:07:37.693Z", "updated_at"=>"2017-10-15T00:07:37.693Z", "event"=>{"id"=>"Biblioteca central", "name"=>"Hola ", "description"=>"señor locutor", "site_id"=>3, "start_time"=>"2017-10-14T12:00:00-05:00", "end_time"=>"2017-10-14T12:00:00-05:00", "owner_id"=>nil, "created_at"=>"2017-10-15T00:07:37.693Z", "updated_at"=>"2017-10-15T00:07:37.693Z"}}
+Unpermitted parameters: :id, :created_at, :updated_at
+  [1m[35m (0.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mSite Load (3.0ms)[0m  [1m[34mSELECT  `sites`.* FROM `sites` WHERE `sites`.`id` = 3 LIMIT 1[0m
+  [1m[36mEvent Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM `events` WHERE `events`.`name` = BINARY 'Hola ' LIMIT 1[0m
+  [1m[35m (0.5ms)[0m  [1m[31mROLLBACK[0m
+Completed 422 Unprocessable Entity in 15ms (Views: 0.3ms | ActiveRecord: 4.5ms)
+
+
+Started POST "/events" for 127.0.0.1 at 2017-10-14 19:07:55 -0500
+Processing by EventsController#create as JSON
+  Parameters: {"id"=>"Leon de Greiff", "name"=>"Concierto", "description"=>"Metallica", "site_id"=>0, "start_time"=>"2017-10-14T12:00:00-05:00", "end_time"=>"2017-10-14T12:00:00-05:00", "owner_id"=>nil, "created_at"=>"2017-10-15T00:07:55.845Z", "updated_at"=>"2017-10-15T00:07:55.845Z", "event"=>{"id"=>"Leon de Greiff", "name"=>"Concierto", "description"=>"Metallica", "site_id"=>0, "start_time"=>"2017-10-14T12:00:00-05:00", "end_time"=>"2017-10-14T12:00:00-05:00", "owner_id"=>nil, "created_at"=>"2017-10-15T00:07:55.845Z", "updated_at"=>"2017-10-15T00:07:55.845Z"}}
+Unpermitted parameters: :id, :created_at, :updated_at
+  [1m[35m (0.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mSite Load (0.5ms)[0m  [1m[34mSELECT  `sites`.* FROM `sites` WHERE `sites`.`id` = 0 LIMIT 1[0m
+  [1m[36mEvent Exists (0.0ms)[0m  [1m[34mSELECT  1 AS one FROM `events` WHERE `events`.`name` = BINARY 'Concierto' LIMIT 1[0m
+  [1m[35m (0.5ms)[0m  [1m[31mROLLBACK[0m
+Completed 422 Unprocessable Entity in 21ms (Views: 0.3ms | ActiveRecord: 1.5ms)
+
+
+Started POST "/events" for 127.0.0.1 at 2017-10-14 19:08:41 -0500
+Processing by EventsController#create as JSON
+  Parameters: {"id"=>"Leon de Greiff", "name"=>"Manu chao", "description"=>"Por la carretera", "site_id"=>1, "start_time"=>"2017-10-14T12:00:00-05:00", "end_time"=>"2017-10-14T12:00:00-05:00", "owner_id"=>nil, "created_at"=>"2017-10-15T00:08:41.541Z", "updated_at"=>"2017-10-15T00:08:41.541Z", "event"=>{"id"=>"Leon de Greiff", "name"=>"Manu chao", "description"=>"Por la carretera", "site_id"=>1, "start_time"=>"2017-10-14T12:00:00-05:00", "end_time"=>"2017-10-14T12:00:00-05:00", "owner_id"=>nil, "created_at"=>"2017-10-15T00:08:41.541Z", "updated_at"=>"2017-10-15T00:08:41.541Z"}}
+Unpermitted parameters: :id, :created_at, :updated_at
+  [1m[35m (0.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mSite Load (0.5ms)[0m  [1m[34mSELECT  `sites`.* FROM `sites` WHERE `sites`.`id` = 1 LIMIT 1[0m
+  [1m[36mEvent Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM `events` WHERE `events`.`name` = BINARY 'Manu chao' LIMIT 1[0m
+  [1m[35mSQL (37.0ms)[0m  [1m[32mINSERT INTO `events` (`name`, `description`, `site_id`, `start_time`, `end_time`, `created_at`, `updated_at`) VALUES ('Manu chao', 'Por la carretera', 1, '2017-10-14 17:00:00', '2017-10-14 17:00:00', '2017-10-15 00:08:41', '2017-10-15 00:08:41')[0m
+  [1m[35m (48.5ms)[0m  [1m[35mCOMMIT[0m
+Completed 201 Created in 103ms (Views: 1.8ms | ActiveRecord: 86.6ms)
+
+
+Started POST "/authenticate/" for 127.0.0.1 at 2017-10-14 20:34:18 -0500
+  
+ActionController::RoutingError (No route matches [POST] "/authenticate"):
+  
+actionpack (5.1.4) lib/action_dispatch/middleware/debug_exceptions.rb:63:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.4) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.4) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.4) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.4) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.4) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.4) lib/rails/rack/logger.rb:24:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.4) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.3) lib/rack/sendfile.rb:111:in `call'
+rack-cors (1.0.1) lib/rack/cors.rb:93:in `call'
+railties (5.1.4) lib/rails/engine.rb:522:in `call'
+puma (3.10.0) lib/puma/configuration.rb:225:in `call'
+puma (3.10.0) lib/puma/server.rb:605:in `handle_request'
+puma (3.10.0) lib/puma/server.rb:437:in `process_client'
+puma (3.10.0) lib/puma/server.rb:301:in `block in run'
+puma (3.10.0) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started POST "/authenticate/" for 127.0.0.1 at 2017-10-14 20:34:19 -0500
+  
+ActionController::RoutingError (No route matches [POST] "/authenticate"):
+  
+actionpack (5.1.4) lib/action_dispatch/middleware/debug_exceptions.rb:63:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.4) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.4) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.4) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.4) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.4) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.4) lib/rails/rack/logger.rb:24:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.4) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.3) lib/rack/sendfile.rb:111:in `call'
+rack-cors (1.0.1) lib/rack/cors.rb:93:in `call'
+railties (5.1.4) lib/rails/engine.rb:522:in `call'
+puma (3.10.0) lib/puma/configuration.rb:225:in `call'
+puma (3.10.0) lib/puma/server.rb:605:in `handle_request'
+puma (3.10.0) lib/puma/server.rb:437:in `process_client'
+puma (3.10.0) lib/puma/server.rb:301:in `block in run'
+puma (3.10.0) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started POST "/events" for ::1 at 2017-10-14 20:43:35 -0500
+  [1m[35m (33.0ms)[0m  [1m[35mSET NAMES utf8,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+Processing by EventsController#create as JSON
+  Parameters: {"id"=>"Derecho", "name"=>"Cena", "description"=>"Jerusalén", "site_id"=>8, "start_time"=>"2017-10-14T12:00:00-05:00", "end_time"=>"2017-10-14T12:00:00-05:00", "owner_id"=>nil, "created_at"=>"2017-10-15T01:43:35.188Z", "updated_at"=>"2017-10-15T01:43:35.188Z", "event"=>{"id"=>"Derecho", "name"=>"Cena", "description"=>"Jerusalén", "site_id"=>8, "start_time"=>"2017-10-14T12:00:00-05:00", "end_time"=>"2017-10-14T12:00:00-05:00", "owner_id"=>nil, "created_at"=>"2017-10-15T01:43:35.188Z", "updated_at"=>"2017-10-15T01:43:35.188Z"}}
+Unpermitted parameters: :id, :created_at, :updated_at
+  [1m[35m (0.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mSite Load (0.0ms)[0m  [1m[34mSELECT  `sites`.* FROM `sites` WHERE `sites`.`id` = 8 LIMIT 1[0m
+  [1m[36mEvent Exists (36.0ms)[0m  [1m[34mSELECT  1 AS one FROM `events` WHERE `events`.`name` = BINARY 'Cena' LIMIT 1[0m
+  [1m[35m (7.0ms)[0m  [1m[31mROLLBACK[0m
+Completed 422 Unprocessable Entity in 408ms (Views: 0.4ms | ActiveRecord: 49.0ms)
+
+
+Started POST "/events" for ::1 at 2017-10-14 20:44:53 -0500
+Processing by EventsController#create as JSON
+  Parameters: {"id"=>"Leon de Greiff", "name"=>"Smoke on the water", "description"=>"Fire in the sky", "site_id"=>1, "start_time"=>"2017-10-14T12:00:00-05:00", "end_time"=>"2017-10-14T12:00:00-05:00", "owner_id"=>nil, "created_at"=>"2017-10-15T01:44:53.323Z", "updated_at"=>"2017-10-15T01:44:53.323Z", "event"=>{"id"=>"Leon de Greiff", "name"=>"Smoke on the water", "description"=>"Fire in the sky", "site_id"=>1, "start_time"=>"2017-10-14T12:00:00-05:00", "end_time"=>"2017-10-14T12:00:00-05:00", "owner_id"=>nil, "created_at"=>"2017-10-15T01:44:53.323Z", "updated_at"=>"2017-10-15T01:44:53.323Z"}}
+Unpermitted parameters: :id, :created_at, :updated_at
+  [1m[35m (1.0ms)[0m  [1m[35mSET NAMES utf8,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  [1m[35m (0.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mSite Load (87.1ms)[0m  [1m[34mSELECT  `sites`.* FROM `sites` WHERE `sites`.`id` = 1 LIMIT 1[0m
+  [1m[36mEvent Exists (16.0ms)[0m  [1m[34mSELECT  1 AS one FROM `events` WHERE `events`.`name` = BINARY 'Smoke on the water' LIMIT 1[0m
+  [1m[35mSQL (9.0ms)[0m  [1m[32mINSERT INTO `events` (`name`, `description`, `site_id`, `start_time`, `end_time`, `created_at`, `updated_at`) VALUES ('Smoke on the water', 'Fire in the sky', 1, '2017-10-14 17:00:00', '2017-10-14 17:00:00', '2017-10-15 01:44:53', '2017-10-15 01:44:53')[0m
+  [1m[35m (47.0ms)[0m  [1m[35mCOMMIT[0m
+Completed 201 Created in 236ms (Views: 1.6ms | ActiveRecord: 162.1ms)
+
+
+Started POST "/events" for ::1 at 2017-10-15 23:29:57 -0500
+  [1m[35m (15.6ms)[0m  [1m[35mSET NAMES utf8,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  [1m[35m (16.0ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+Processing by EventsController#create as */*
+  Parameters: {"name"=>"mi evento 2", "description"=>"Biggest event", "start_time"=>"19900909", "end_time"=>"19900909", "site_id"=>"1", "event"=>{"name"=>"mi evento 2", "description"=>"Biggest event", "site_id"=>"1", "start_time"=>"19900909", "end_time"=>"19900909"}}
+  [1m[35m (0.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mSite Load (15.6ms)[0m  [1m[34mSELECT  `sites`.* FROM `sites` WHERE `sites`.`id` = 1 LIMIT 1[0m
+  [1m[36mEvent Exists (55.0ms)[0m  [1m[34mSELECT  1 AS one FROM `events` WHERE `events`.`name` = BINARY 'mi evento 2' LIMIT 1[0m
+  [1m[35m (0.0ms)[0m  [1m[31mROLLBACK[0m
+Completed 422 Unprocessable Entity in 581ms (Views: 0.3ms | ActiveRecord: 163.8ms)
+
+
+Started DELETE "/events?name=mi%20Evento%202" for ::1 at 2017-10-15 23:31:25 -0500
+Processing by EventsController#destroy_by_name as */*
+  Parameters: {"name"=>"mi Evento 2", "description"=>"Biggest event", "start_time"=>"19900909", "end_time"=>"19900909", "site_id"=>"1", "event"=>{"name"=>"mi Evento 2", "description"=>"Biggest event", "site_id"=>"1", "start_time"=>"19900909", "end_time"=>"19900909"}}
+Completed 500 Internal Server Error in 2ms (ActiveRecord: 0.0ms)
+
+
+  
+ArgumentError (wrong number of arguments (given 0, expected 1)):
+  
+app/controllers/events_controller.rb:68:in `destroy_by_name'
+Started DELETE "/events?name=mi%20Evento%202" for ::1 at 2017-10-15 23:36:21 -0500
+  [1m[35m (3.0ms)[0m  [1m[35mSET NAMES utf8,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+Processing by EventsController#destroy_by_name as */*
+  Parameters: {"name"=>"mi Evento 2", "description"=>"Biggest event", "start_time"=>"19900909", "end_time"=>"19900909", "site_id"=>"1", "event"=>{"name"=>"mi Evento 2", "description"=>"Biggest event", "site_id"=>"1", "start_time"=>"19900909", "end_time"=>"19900909"}}
+Completed 500 Internal Server Error in 1ms (ActiveRecord: 3.0ms)
+
+
+  
+ArgumentError (wrong number of arguments (given 0, expected 1)):
+  
+app/controllers/events_controller.rb:67:in `destroy_by_name'
+Started DELETE "/events?name=mi%20Evento%202" for ::1 at 2017-10-15 23:38:55 -0500
+  [1m[35m (1.0ms)[0m  [1m[35mSET NAMES utf8,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+Processing by EventsController#destroy_by_name as */*
+  Parameters: {"name"=>"mi Evento 2", "description"=>"Biggest event", "start_time"=>"19900909", "end_time"=>"19900909", "site_id"=>"1", "event"=>{"name"=>"mi Evento 2", "description"=>"Biggest event", "site_id"=>"1", "start_time"=>"19900909", "end_time"=>"19900909"}}
+Completed 500 Internal Server Error in 111ms (ActiveRecord: 24.2ms)
+
+
+  
+NameError (undefined local variable or method `name' for #<EventsController:0x5c01d50>):
+  
+app/controllers/events_controller.rb:67:in `destroy_by_name'
+Started DELETE "/events?name=mi%20Evento%202" for ::1 at 2017-10-15 23:39:37 -0500
+  [1m[35m (0.0ms)[0m  [1m[35mSET NAMES utf8,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+Processing by EventsController#destroy_by_name as */*
+  Parameters: {"name"=>"mi Evento 2", "description"=>"Biggest event", "start_time"=>"19900909", "end_time"=>"19900909", "site_id"=>"1", "event"=>{"name"=>"mi Evento 2", "description"=>"Biggest event", "site_id"=>"1", "start_time"=>"19900909", "end_time"=>"19900909"}}
+  [1m[36mEvent Load (1.0ms)[0m  [1m[34mSELECT `events`.* FROM `events` WHERE `events`.`name` = 'mi Evento 2'[0m
+  [1m[35m (0.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (81.1ms)[0m  [1m[31mDELETE FROM `events` WHERE `events`.`id` = 2[0m
+  [1m[35m (121.1ms)[0m  [1m[35mCOMMIT[0m
+Completed 204 No Content in 255ms (ActiveRecord: 229.2ms)
+
+

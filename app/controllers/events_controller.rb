@@ -58,9 +58,14 @@ class EventsController < ApplicationController
     end
   end
 
-  # DELETE /events/1
+  # DELETE /events/1sfddddddddddddddddd
   def destroy
     @event.destroy
+  end
+
+  def destroy_by_name
+    Event.where(:name => params[:name]).destroy_all
+    #@event.destroy
   end
 
   private
