@@ -15,7 +15,7 @@ default: &default
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   username: arqsoft
   password: 123
-  host: db_events_sites
+  host: db_events_places
   #username: arqsoft
   #password: 123
   #host: db_events_sites
@@ -23,14 +23,14 @@ default: &default
 
 development:
   <<: *default
-  database: events_sites
+  database: events_places
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-  database: ms_events_sites_test
+  database: db_events_places_test
 
 # As with config/secrets.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
@@ -53,6 +53,6 @@ test:
 #
 production:
   <<: *default
-  database: ms_events_sites_production
-  username: ms_events_sites
-  password: <%= ENV['MS_EVENTS_SITES_DATABASE_PASSWORD'] %>
+  database: db_events_places_production
+  username: events_places
+  password: <%= ENV['ms_events_places_DATABASE_PASSWORD'] %>
