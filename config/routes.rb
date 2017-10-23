@@ -6,8 +6,8 @@ Rails.application.routes.draw do
 	root 'events#index'
 	get '/:id' => "events#show"
 	post '/' =>  "events#create"
-	get '/view/my_events' => 'events#my_events'
-	get '/view/events_place/:place_id' => 'events#events_place'
+	get '/events/owner/:owner_id' => 'events#events_by_owner'
+	get '/events/place/:place_id' => 'events#events_by_place'
   delete '/events' => 'events#destroy_by_name'
 
  #match "*all" => "application#cors_preflight_check", :constraints => { :method => "OPTIONS" }
