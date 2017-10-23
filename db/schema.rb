@@ -15,7 +15,7 @@ ActiveRecord::Schema.define(version: 20171006184152) do
   create_table "events", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "name"
     t.string "description"
-    t.integer "site_id"
+    t.integer "place_id"
     t.datetime "start_time"
     t.datetime "end_time"
     t.integer "owner_id"
@@ -23,7 +23,7 @@ ActiveRecord::Schema.define(version: 20171006184152) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "sites", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "places", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "name"
     t.float "longitude", limit: 24
     t.float "latitude", limit: 24

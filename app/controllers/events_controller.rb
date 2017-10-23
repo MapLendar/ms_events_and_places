@@ -24,9 +24,9 @@ class EventsController < ApplicationController
     render json: @myevents, status: 200
   end
 
-  def events_site
-    @eventsites =  Event.where(site_id: params[:site_id])
-    render json: @eventsites, status: 200
+  def events_place
+    @eventplaces =  Event.where(place_id: params[:place_id])
+    render json: @eventplaces, status: 200
   end
 
 
@@ -78,6 +78,6 @@ class EventsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def event_params
-      params.require(:event).permit(:name, :description, :site_id, :start_time, :end_time, :owner_id)
+      params.require(:event).permit(:name, :description, :place_id, :start_time, :end_time, :owner_id)
     end
 end

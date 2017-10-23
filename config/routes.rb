@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :sites
+  resources :places
 
  resources :events, only: [:index, :show, :create, :update, :destroy, :delete]
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
@@ -7,7 +7,7 @@ Rails.application.routes.draw do
 	get '/:id' => "events#show"
 	post '/' =>  "events#create"
 	get '/view/my_events' => 'events#my_events'
-	get '/view/events_site/:site_id' => 'events#events_site'
+	get '/view/events_place/:place_id' => 'events#events_place'
   delete '/events' => 'events#destroy_by_name'
 
  #match "*all" => "application#cors_preflight_check", :constraints => { :method => "OPTIONS" }

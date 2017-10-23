@@ -1,36 +1,36 @@
 require 'test_helper'
 
-class SitesControllerTest < ActionDispatch::IntegrationTest
+class PlacesControllerTest < ActionDispatch::IntegrationTest
   setup do
-    @site = sites(:one)
+    @place = places(:one)
   end
 
   test "should get index" do
-    get sites_url, as: :json
+    get places_url, as: :json
     assert_response :success
   end
 
-  test "should create site" do
-    assert_difference('Site.count') do
-      post sites_url, params: { site: { image: @site.image, latitude: @site.latitude, longitude: @site.longitude, name: @site.name } }, as: :json
+  test "should create place" do
+    assert_difference('Place.count') do
+      post places_url, params: { place: { image: @place.image, latitude: @place.latitude, longitude: @place.longitude, name: @place.name } }, as: :json
     end
 
     assert_response 201
   end
 
-  test "should show site" do
-    get site_url(@site), as: :json
+  test "should show place" do
+    get place_url(@place), as: :json
     assert_response :success
   end
 
-  test "should update site" do
-    patch site_url(@site), params: { site: { image: @site.image, latitude: @site.latitude, longitude: @site.longitude, name: @site.name } }, as: :json
+  test "should update place" do
+    patch place_url(@place), params: { place: { image: @place.image, latitude: @place.latitude, longitude: @place.longitude, name: @place.name } }, as: :json
     assert_response 200
   end
 
-  test "should destroy site" do
-    assert_difference('Site.count', -1) do
-      delete site_url(@site), as: :json
+  test "should destroy place" do
+    assert_difference('Place.count', -1) do
+      delete place_url(@place), as: :json
     end
 
     assert_response 204
