@@ -19,12 +19,12 @@ class EventsController < ApplicationController
 
   end
 
-  def my_events
+  def events_by_owner
     @myevents = Event.where(owner_id: params[:owner_id] )
     render json: @myevents, status: 200
   end
 
-  def events_place
+  def events_by_place
     @eventplaces =  Event.where(place_id: params[:place_id])
     render json: @eventplaces, status: 200
   end
