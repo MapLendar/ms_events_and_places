@@ -1,6 +1,7 @@
 class EventsController < ApplicationController
   before_action :set_event, only: [:show, :update, :destroy]
 
+
   # GET /events
   def index
     @events = Event.all
@@ -18,14 +19,14 @@ class EventsController < ApplicationController
 
   end
 
-  def my_events
+  def events_by_owner
     @myevents = Event.where(owner_id: params[:owner_id] )
     render json: @myevents, status: 200
   end
 
-  def events_site
-    @eventsites =  Event.where(site_id: params[:site_id])
-    render json: @eventsites, status: 200
+  def events_by_place
+    @eventplaces =  Event.where(place_id: params[:place_id])
+    render json: @eventplaces, status: 200
   end
 
 
@@ -58,9 +59,15 @@ class EventsController < ApplicationController
     end
   end
 
-  # DELETE /events/1
+  # DELETE /events/1sfddddddddddddddddd
   def destroy
     @event.destroy
+  end
+
+  def destroy_by_name
+    @del = Event.where(:name => params[:name]).destroy_all
+    render json: @del, status: 200
+    #@event.destroy
   end
 
   private
@@ -71,6 +78,6 @@ class EventsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def event_params
-      params.require(:event).permit(:name, :description, :site_id, :start_time, :end_time, :owner_id)
+      params.require(:event).permit(:name, :description, :place_id, :start_time, :end_time, :owner_id)
     end
 end

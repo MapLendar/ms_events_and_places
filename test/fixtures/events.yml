@@ -3,7 +3,7 @@
 one:
   name: MyString
   description: MyString
-  site_id: 1
+  place_id: 1
   start_time: 2017-10-06 13:41:04
   end_time: 2017-10-06 13:41:04
   owner_id: 1
@@ -11,7 +11,7 @@ one:
 two:
   name: MyString
   description: MyString
-  site_id: 1
+  place_id: 1
   start_time: 2017-10-06 13:41:04
   end_time: 2017-10-06 13:41:04
   owner_id: 1

@@ -1,6 +1,6 @@
 class Event < ApplicationRecord
-	belongs_to :site
-	 validates :name, :uniqueness => true
+	belongs_to :place
+	 validates :name, presence: true
 	 validates :name, :length => { :maximum => 45, :too_long => "%{count} Demasiados caracteres" }
 	 validates :name, :length => { :minimum => 5, :too_short => "%{count} Muy pocos caracteres" }
 
