@@ -32,7 +32,7 @@ class EventsController < ApplicationController
 
   # GET /signin/event/1
   def showMyEvent
-    @response = HTTParty.get("http://192.168.99.101:3006/events/")
+    @response = HTTParty.get("http://192.168.99.101:3002/events/")
     @result = JSON.parse(@response.body)
     # @result.delete_if {|key, value| key["id"] != params [:id].to_i}
     render json: @result

@@ -1,4 +1,3 @@
-# MySQL. Versions 5.1.10 and up are supported.
 #
 # Install the MySQL driver
 #   gem install mysql2
@@ -12,22 +11,21 @@
 default: &default
   adapter: mysql2
   encoding: utf8
-  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS"){ 5 } %>
+  database: events_and_places
   username: arqsoft
   password: 123
   host: db_events_and_places
-  socket: /var/run/mysqld/mysqld.sock
+  socket: /tmp/mysql.sock
 
 development:
   <<: *default
-  database: events_and_places
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-  database: db_events_and_places_test
 
 # As with config/secrets.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
@@ -50,6 +48,3 @@ test:
 #
 production:
   <<: *default
-  database: db_events_and_places_production
-  username: events_and_places
-  password: <%= ENV['ms_events_and_places_DATABASE_PASSWORD'] %>

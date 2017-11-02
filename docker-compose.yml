@@ -1,9 +1,11 @@
 version: '2'
 services:
   db_events_and_places:
-    image: mysql
+    image: mariadb
     ports:
-      - "4006:3306"
+      - "4002:3306"
+    expose:
+      - "4002"
     environment:
       MYSQL_ROOT_PASSWORD: 1234
       MYSQL_USER: arqsoft
@@ -12,8 +14,10 @@ services:
       MYSQL_HOST: db_events_and_places
   ms_events_and_places:
     build: .
-    command: bash -c "sleep 40 && rm -f tmp/pids/server.pid && bundle exec rails db:migrate && bundle exec rails s -p 3000 -b '0.0.0.0'"
+    command: bash -c "sleep 40 && rm -f tmp/pids/server.pid && bundle exec rails db:create && bundle exec rails db:migrate && bundle exec rails s -p 3000 -b '0.0.0.0'"
     ports:
-      - "3006:3000"
+      - "3002:3000"
+    expose:
+      - "3002"
     depends_on:
       - db_events_and_places
