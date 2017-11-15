@@ -1,6 +1,6 @@
 version: '2'
 services:
-  db_events_and_places:
+  db-events-and-places:
     image: mysql
     ports:
       - "4006:3306"
@@ -9,11 +9,11 @@ services:
       MYSQL_USER: arqsoft
       MYSQL_PASSWORD: 123
       MYSQL_DATABASE: events_and_places
-      MYSQL_HOST: db_events_and_places
-  ms_events_and_places:
+      MYSQL_HOST: db-events-and-places
+  ms-events-and-places:
     build: .
     command: bash -c "sleep 40 && rm -f tmp/pids/server.pid && bundle exec rails db:migrate && bundle exec rails s -p 3000 -b '0.0.0.0'"
     ports:
       - "3006:3000"
     depends_on:
-      - db_events_and_places
+      - db-events-and-places

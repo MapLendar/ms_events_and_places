@@ -15,7 +15,7 @@ default: &default
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   username: arqsoft
   password: 123
-  host: db_events_and_places
+  host: db-events-and-places
   socket: /var/run/mysqld/mysqld.sock
 
 development:
