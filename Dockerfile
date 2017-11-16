@@ -1,7 +1,7 @@
 FROM ruby:2.4.2
-RUN mkdir /ms_events_and_places
-WORKDIR /ms_events_and_places
-ADD Gemfile /ms_events_and_places/Gemfile
-ADD Gemfile.lock /ms_events_and_places/Gemfile.lock
+RUN mkdir /ms-events-and-places
+WORKDIR /ms-events-and-places
+ADD Gemfile /ms-events-and-places/Gemfile
+ADD Gemfile.lock /ms-events-and-places/Gemfile.lock
 RUN bundle install
-ADD . /ms_events_and_places
+ADD . /ms-events-and-places

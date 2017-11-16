@@ -7,4 +7,4 @@ test:
 production:
   adapter: redis
   url: redis://localhost:6379/1
-  channel_prefix: ms_events_and_places_production
+  channel_prefix: ms-events-and-places_production

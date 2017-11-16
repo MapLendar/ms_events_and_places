@@ -52,4 +52,4 @@ production:
   <<: *default
   database: db_events_and_places_production
   username: events_and_places
-  password: <%= ENV['ms_events_and_places_DATABASE_PASSWORD'] %>
+  password: <%= ENV['ms-events-and-places_DATABASE_PASSWORD'] %>
