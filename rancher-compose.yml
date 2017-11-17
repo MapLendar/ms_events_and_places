@@ -1,3 +1,8 @@
 version: '2'
-sa-ms-events-and-places:
-  scale:4
+services:
+  ms-events-and-places:
+    scale: 4
+    start_on_create: true
+  db-events-and-places:
+    scale: 2
+    start_on_create: true
