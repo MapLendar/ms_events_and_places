@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 	root 'events#index'
 	get '/:id' => "events#show"
-	post '/' =>  "events#create"
+	post '/events' =>  "events#create"
 	get '/events/owner/:owner_id' => 'events#events_by_owner'
 	get '/events/place/:place_id' => 'events#events_by_place'
   delete '/events' => 'events#destroy_by_name'
